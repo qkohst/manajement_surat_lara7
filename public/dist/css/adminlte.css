@@ -42,6 +42,12 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+/*		Sweet Alert		*/
+.swal-footer {
+  text-align: center !important;
+  margin-bottom: 10px !important;
+}
+
 *,
 *::before,
 *::after {

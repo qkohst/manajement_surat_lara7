@@ -19,3 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'AuthController@index')->name('login');
 Route::post('/', 'AuthController@store')->name('login');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('logout', 'AuthController@logout')->name('logout');
+
+    // Route Admin
+    Route::group(['middleware' => 'CheckRole:1'], function () {
+        Route::resource('/user', 'UserController');
+    });
+});
