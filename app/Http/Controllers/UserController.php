@@ -36,6 +36,7 @@ class UserController extends Controller
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:6|max:20',
             'role' => 'required',
+            
         ]);
 
         if ($validator->fails()) {

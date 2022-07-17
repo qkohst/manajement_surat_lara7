@@ -24,9 +24,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('logout', 'AuthController@logout')->name('logout');
 
+    Route::resource('/klasifikasi', 'KlasifikasiController', [
+        'uses' => ['index', 'store', 'update', 'destroy']
+    ]);
     // Route Admin
     Route::group(['middleware' => 'CheckRole:1'], function () {
-        Route::resource('/user', 'UserController');
+        Route::resource('/user', 'UserController', [
+            'uses' => ['index', 'store', 'update', 'destroy']
+        ]);
         Route::resource('/instansi', 'InstansiController', [
             'uses' => ['index', 'edit', 'update']
         ]);

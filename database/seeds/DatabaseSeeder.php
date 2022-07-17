@@ -1,6 +1,7 @@
 <?php
 
 use App\Instansi;
+use App\Klasifikasi;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -36,6 +37,12 @@ class DatabaseSeeder extends Seeder
             'pimpinan'    => 'Dr. Merdeka',
             'email'    => 'merdeka.mail.com',
             'logo' => 'default_istansi.png',
+        ]);
+        // Add Data Klasifikasi 
+        Klasifikasi::create([
+            'nama'    => 'Undangan',
+            'kode' => 'A',
+            'keterangan'    => 'Klasifikasi Untuk Undangan',
         ]);
     }
 }

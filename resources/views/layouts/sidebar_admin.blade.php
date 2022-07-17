@@ -80,7 +80,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="/klasifikasi/index" class="nav-link">
+            <a href="{{ route('klasifikasi.index') }}" class="nav-link {{ Route::is('klasifikasi.*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-layer-group"></i>
                 <p>
                     Klasifikasi
