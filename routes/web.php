@@ -27,5 +27,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Route Admin
     Route::group(['middleware' => 'CheckRole:1'], function () {
         Route::resource('/user', 'UserController');
+        Route::resource('/instansi', 'InstansiController', [
+            'uses' => ['index', 'edit', 'update']
+        ]);
     });
 });

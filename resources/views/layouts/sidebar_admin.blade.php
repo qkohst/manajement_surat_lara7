@@ -88,8 +88,8 @@
             </a>
         </li>
 
-        <li class="nav-item has-treeview {{ Route::is('user.*') ? ' menu-open' : '' }}">
-            <a href="#" class="nav-link {{ Route::is('user.*') ? 'active' : '' }}">
+        <li class="nav-item has-treeview {{ Route::is('user.*') ? ' menu-open' : '' }} {{ Route::is('instansi.*') ? ' menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('user.*') ? 'active' : '' }} {{ Route::is('instansi.*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p>
                     Pengaturan
@@ -98,7 +98,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('instansi.index') }}" class="nav-link {{ Route::is('instansi.*') ? 'active' : '' }}">
                         <i class="fas fa-warehouse nav-icon"></i>
                         <p>Manajemen Instansi</p>
                     </a>
