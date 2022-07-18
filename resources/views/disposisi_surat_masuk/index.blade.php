@@ -120,7 +120,7 @@
                             <td>{{date('d-M-Y', strtotime($disposisi->batas_waktu))}}</td>
                             <td>{{$disposisi->catatan}}</td>
                             <td>
-                                <a href="{{ route('disposisi.show', $disposisi->id) }}" target="_black" class="btn btn-primary btn-sm mb-1">Cetak</a>
+                                <a href="{{ route('disposisi.show', $disposisi->id) }}" target="_blank" class="btn btn-primary btn-sm mb-1">Cetak</a>
                                 <button type="button" class="btn btn-warning btn-sm mb-1" data-toggle="modal" data-target="#modalEdit{{$disposisi->id}}">
                                     Edit
                                 </button>

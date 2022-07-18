@@ -36,13 +36,13 @@
                             <!-- small box -->
                             <div class="small-box">
                                 <div class="inner">
-                                    <a href="{{ route('galeri.suratmasuk.tampil', $suratmasuk->id) }}" target="_black" data-toggle="lightbox" data-title="Perbesar Gambar">
+                                    <a href="{{ route('galeri.suratmasuk.tampil', $suratmasuk->id) }}" target="_blank" data-toggle="lightbox" data-title="Perbesar Gambar">
                                         <center>
                                             <img src="/dist/img/surat_masuk/{{$suratmasuk->file}}" width="100" height="150" alt="File .doc, .docx, atau .pdf tidak dapat ditampilkan, Silahkan klik Lihat Detail File">
                                         </center>
                                     </a>
                                 </div>
-                                <a href="{{ route('galeri.suratmasuk.tampil', $suratmasuk->id) }}" target="_black" class="small-box-footer bg-success">Lihat Detail File <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="{{ route('galeri.suratmasuk.tampil', $suratmasuk->id) }}" target="_blank" class="small-box-footer bg-success">Lihat Detail File <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         @endforeach

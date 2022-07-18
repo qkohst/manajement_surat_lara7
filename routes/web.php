@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
         'uses' => ['index', 'store', 'update', 'destroy', 'show']
     ]);
     Route::resource('/disposisi', 'DisposisiSuratMasukController', [
-        'uses' => ['store', 'update', 'destroy']
+        'uses' => ['store', 'update', 'show', 'destroy']
     ]);
     Route::get('/suratkeluar/galeri', 'SuratKeluarController@galeri')->name('galeri.suratkeluar');
     Route::get('/suratkeluar/galeri/{id}', 'SuratKeluarController@tampil')->name('galeri.suratkeluar.tampil');

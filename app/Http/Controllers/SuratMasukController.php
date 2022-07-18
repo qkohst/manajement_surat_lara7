@@ -72,7 +72,7 @@ class SuratMasukController extends Controller
     {
         $title = 'Disposisi Surat Masuk';
         $surat_masuk = SuratMasuk::findorfail($id);
-        $data_disposisi = DisposisiSuratMasuk::where('surat_masuks_id', $id)->get();
+        $data_disposisi = DisposisiSuratMasuk::where('surat_masuks_id', $id)->orderBy('id', 'DESC')->get();
         return view('disposisi_surat_masuk.index', compact('title', 'surat_masuk', 'data_disposisi'));
     }
 

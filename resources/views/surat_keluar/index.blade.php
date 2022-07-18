@@ -142,7 +142,7 @@
                             <td>{{$no}}</td>
                             <td>{{$suratkeluar->isi_surat}}</td>
                             <td>
-                                <a href="dist/img/surat_keluar/{{$suratkeluar->file}}" target="_black">{{$suratkeluar->file}}</a>
+                                <a href="dist/img/surat_keluar/{{$suratkeluar->file}}" target="_blank">{{$suratkeluar->file}}</a>
                             </td>
                             <td>{{$suratkeluar->tujuan_surat}}</td>
                             <td>{{$suratkeluar->klasifikasis->kode}}</td>

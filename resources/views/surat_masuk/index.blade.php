@@ -142,7 +142,7 @@
                             <td>{{$no}}</td>
                             <td>{{$suratmasuk->isi_surat}}</td>
                             <td>
-                                <a href="dist/img/surat_masuk/{{$suratmasuk->file}}" target="_black">{{$suratmasuk->file}}</a>
+                                <a href="dist/img/surat_masuk/{{$suratmasuk->file}}" target="_blank">{{$suratmasuk->file}}</a>
                             </td>
                             <td>{{$suratmasuk->asal_surat}}</td>
                             <td>{{$suratmasuk->klasifikasis->kode}}</td>
