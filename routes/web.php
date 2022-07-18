@@ -27,6 +27,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/klasifikasi', 'KlasifikasiController', [
         'uses' => ['index', 'store', 'update', 'destroy']
     ]);
+    Route::get('/suratmasuk/galeri', 'SuratMasukController@galeri')->name('galeri.suratmasuk');
+    Route::get('/suratmasuk/galeri/{id}', 'SuratMasukController@tampil')->name('galeri.suratmasuk.tampil');
+    Route::resource('/suratmasuk', 'SuratMasukController', [
+        'uses' => ['index', 'store', 'update', 'destroy', 'show']
+    ]);
+    Route::resource('/disposisi', 'DisposisiSuratMasukController', [
+        'uses' => ['store', 'update', 'destroy']
+    ]);
+    Route::get('/suratkeluar/galeri', 'SuratKeluarController@galeri')->name('galeri.suratkeluar');
+    Route::get('/suratkeluar/galeri/{id}', 'SuratKeluarController@tampil')->name('galeri.suratkeluar.tampil');
+    Route::resource('/suratkeluar', 'SuratKeluarController', [
+        'uses' => ['index', 'store', 'update', 'destroy']
+    ]);
     // Route Admin
     Route::group(['middleware' => 'CheckRole:1'], function () {
         Route::resource('/user', 'UserController', [

@@ -100,16 +100,15 @@
                             <td>{{$klasifikasi->keterangan}}</td>
                             <td>
                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEdit{{$klasifikasi->id}}">
-                                    <i class="fas fa-pencil-alt"></i> Edit
-                                </button>
-
+                                    Edit
+                                </button>                                
                                 @if (auth()->user()->role == 1)
                                 <a href="#" class="btn btn-sm btn-danger mb-0 btn-delete" data-id="{{$klasifikasi->id}}">
                                     <form action="{{ route('klasifikasi.destroy', $klasifikasi->id) }}" method="post" id="delete{{$klasifikasi->id}}">
                                         @csrf
                                         @method('delete')
                                     </form>
-                                    <i class="fas fa-trash-alt"></i> Hapus
+                                    Hapus
                                 </a>
                                 @endif
 

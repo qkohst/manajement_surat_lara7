@@ -10,7 +10,8 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">{{$title}}</li>
+                    <li class="breadcrumb-item"><a href="{{ route('disposisi.index') }}">Surat Masuk</a></li>
+                    <li class="breadcrumb-item active">Disposisi</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -23,7 +24,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Data {{$title}}</h3>
+                <h3 class="card-title">{{$title}}</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-tambah">
@@ -33,7 +34,7 @@
                 <!-- /.modal -->
 
                 <div class="modal fade" id="modal-tambah">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Tambah {{$title}}</h5>
@@ -43,36 +44,39 @@
                             </div>
 
 
-                            <form id="formTambah" action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
+                            <form id="formTambah" action="{{ route('disposisi.store') }}" method="post">
                                 @csrf
                                 <!-- Modal Body  -->
+                                <input type="hidden" name="surat_masuk_id" value="{{$surat_masuk->id}}">
                                 <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="name">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" value="{{old('name')}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tipe">Tipe Pengguna</label>
-                                        <div class="form-group">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="role" id="role1" value="1">
-                                                <label class="form-check-label" for="role1">Admin</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="role" id="role2" value="2" checked>
-                                                <label class="form-check-label" for="role2">Petugas</label>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Tujuan</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="tujuan" class="form-control" value="{{old('tujuan')}}">
                                         </div>
                                     </div>
-
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Batas Waktu</label>
+                                        <div class="col-sm-4">
+                                            <input type="date" name="batas_waktu" class="form-control" value="{{old('batas_waktu')}}">
+                                        </div>
+                                        <label class="col-sm-2 col-form-label">Sifat Dipsosisi</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="sifat" class="form-control" value="{{old('sifat')}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Isi Diposisi</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" name="isi" rows="3">{{old('isi')}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Catatan</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" name="catatan" rows="2">{{old('catatan')}}</textarea>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Modal Footer -->
@@ -90,42 +94,39 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">
+                <h5>Nomor Surat : {{$surat_masuk->nomor_surat}}</h5>
 
-                <table id="example1" class="table table-hover">
-
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Level</th>
+                            <th>Tujuan</th>
+                            <th>Isi Disposisi</th>
+                            <th>Sifat</th>
+                            <th>Batas Waktu</th>
+                            <th>Catatan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php $no = 0; ?>
-                        @foreach($users as $user)
+                        @foreach($data_disposisi as $disposisi)
                         <?php $no++; ?>
                         <tr>
                             <td>{{$no}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
+                            <td>{{$disposisi->tujuan}}</td>
+                            <td>{{$disposisi->isi}}</td>
+                            <td>{{$disposisi->sifat}}</td>
+                            <td>{{date('d-M-Y', strtotime($disposisi->batas_waktu))}}</td>
+                            <td>{{$disposisi->catatan}}</td>
                             <td>
-                                @if($user->role == 1)
-                                Admin
-                                @else
-                                Petugas
-                                @endif
-                            </td>
-                            <td>
-                                @if($user->role != auth()->user()->role)
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEdit{{$user->id}}">
+                                <a href="{{ route('disposisi.show', $disposisi->id) }}" target="_black" class="btn btn-primary btn-sm mb-1">Cetak</a>
+                                <button type="button" class="btn btn-warning btn-sm mb-1" data-toggle="modal" data-target="#modalEdit{{$disposisi->id}}">
                                     Edit
                                 </button>
-
-                                <a href="#" class="btn btn-sm btn-danger mb-0 btn-delete" data-id="{{$user->id}}">
-                                    <form action="{{ route('user.destroy', $user->id) }}" method="post" id="delete{{$user->id}}">
+                                @if (auth()->user()->role == 1)
+                                <a href="#" class="btn btn-sm btn-danger mb-0 btn-delete mb-1" data-id="{{$disposisi->id}}">
+                                    <form action="{{ route('disposisi.destroy', $disposisi->id) }}" method="post" id="delete{{$disposisi->id}}">
                                         @csrf
                                         @method('delete')
                                     </form>
@@ -133,58 +134,62 @@
                                 </a>
                                 @endif
                             </td>
+                        </tr>
 
-                            <!-- Modal Edit-->
-                            <div class="modal fade" id="modalEdit{{$user->id}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Edit {{$title}}</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <form id="formEdit{{$user->id}}" action="{{ route('user.update', $user->id) }}" method="post">
-                                            {{ method_field('PATCH') }}
-                                            @csrf
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="name">Nama Lengkap</label>
-                                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" value="{{$user->name}}" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email">Email</label>
-                                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{$user->email}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="password">Password <small class="text-danger"><i>* Hanya untuk mengganti password</i></small></label>
-                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="tipe">Tipe Pengguna</label>
-                                                    <div class="form-group">
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="role" id="role1" value="1" @if ($user->role == 1) checked @endif>
-                                                            <label class="form-check-label" for="role1">Admin</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="role" id="role2" value="2" @if ($user->role == 2) checked @endif>
-                                                            <label class="form-check-label" for="role2">Petugas</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer justify-content-end">
-                                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal</button>
-                                                <a href="#" class="btn btn-primary btn-update-save" data-id="{{$user->id}}">Simpan</a>
-                                            </div>
-                                        </form>
+                        <!-- Modal Edit-->
+                        <div class="modal fade" id="modalEdit{{$disposisi->id}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit {{$title}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
+                                    <form id="formEdit{{$disposisi->id}}" action="{{ route('disposisi.update', $disposisi->id) }}" method="post">
+                                        {{ method_field('PATCH') }}
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Tujuan</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="tujuan" class="form-control" value="{{$disposisi->tujuan}}" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Batas Waktu</label>
+                                                <div class="col-sm-4">
+                                                    <input type="date" name="batas_waktu" class="form-control" value="{{$disposisi->batas_waktu}}">
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Sifat Dipsosisi</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="sifat" class="form-control" value="{{$disposisi->sifat}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Isi Diposisi</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" name="isi" rows="3">{{$disposisi->isi}}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Catatan</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" name="catatan" rows="2">{{$disposisi->catatan}}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer justify-content-end">
+                                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal</button>
+                                            <a href="#" class="btn btn-primary btn-update-save" data-id="{{$disposisi->id}}">Simpan</a>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
+                        </div>
 
-                        </tr>
                         @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -197,16 +202,6 @@
 @endsection
 
 @section('scripts')
-
-<!-- DataTables -->
-<script src="/plugins/datatables/jquery.dataTables.js"></script>
-<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-
-<script>
-    $(function() {
-        $("#example1").DataTable();
-    });
-</script>
 
 <!-- Sweet Alert -->
 <script src="/plugins/sweetalert/sweetalert.min.js"></script>

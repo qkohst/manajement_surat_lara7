@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function surat_masuks()
+    {
+        return $this->hasMany('App\SuratMasuk');
+    }
+
+    public function surat_keluars()
+    {
+        return $this->hasMany('App\SuratKeluar');
+    }
+
+    public function disposisi_surat_masuks()
+    {
+        return $this->hasMany('App\DisposisiSuratMasuk');
+    }
 }

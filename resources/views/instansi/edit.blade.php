@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <textarea name="alamat" class="form-control bg-light" id="alamat" rows="2" placeholder="Alamat" required>{{$instansi->alamat}}</textarea>
+                        <textarea name="alamat" class="form-control" id="alamat" rows="2" placeholder="Alamat" required>{{$instansi->alamat}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="pimpinan">Nama Pimpinan</label>
