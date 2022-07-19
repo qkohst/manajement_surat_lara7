@@ -51,7 +51,7 @@ Admin
 > Username : admin@mail.com
 > Password : 123456
 > 
-Admin
+Petugas
 > Username : petugas@mail.com
 > Password : 123456
 > 
