@@ -1,5 +1,29 @@
 <div id="top"></div>
 
+# Mail Management System
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about">About The Project</a>
+    </li>
+    <li>
+      <a href="#installation">Installation</a>
+    </li> 
+    <li>
+      <a href="#credential">Credential</a>
+    </li> 
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
+
+<p id="about">
+This system is built with the laravel 7.x framework and MySQL DBMS using a template from the LTE admin. which is the result of the development of the previous system, namely the Mail Management System which can be accessed at https://github.com/qkohst/surat_management
+</p>
+
 ## Installation 
 To run the application on your computer, please follow the following command : 
 
