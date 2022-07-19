@@ -33,8 +33,8 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+        <li class="nav-item has-treeview {{ Route::is('agendamasuk.index') ? ' menu-open' : '' }} {{ Route::is('agendakeluar.index') ? ' menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('agendamasuk.index') ? 'active' : '' }} {{ Route::is('agendakeluar.index') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                     Buku Agenda
@@ -43,13 +43,13 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/suratmasuk/agenda" class="nav-link">
+                    <a href="{{ route('agendamasuk.index') }}" class="nav-link {{ Route::is('agendamasuk.index') ? 'active' : '' }}">
                         <i class="far fa-envelope nav-icon"></i>
                         <p>Agenda Surat Masuk</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/suratkeluar/agenda" class="nav-link">
+                    <a href="{{ route('agendakeluar.index') }}" class="nav-link {{ Route::is('agendakeluar.index') ? 'active' : '' }}">
                         <i class="far fa-envelope-open nav-icon"></i>
                         <p>Agenda Surat Keluar</p>
                     </a>
