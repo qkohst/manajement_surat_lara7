@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +33,7 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
         if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->back()->with('error', 'Email atau Password Salah!');
+            return back()->with('toast_error', 'Email atau Password Salah!');
         } else {
             return redirect('dashboard')->with('toast_success', 'Login success.');
         }

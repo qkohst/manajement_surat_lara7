@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <title>Aplikasi Manajemen Surat</title>
     <style>
         body {
@@ -97,11 +98,7 @@
 
 <body>
     <div class="kotak_login">
-        @if(session('error'))
-        <div class="alert alert-danger" role="alert">
-            {{session('error')}}
-        </div>
-        @endif
+
         <img src="/logo.svg" alt="Logo" class="logo">
         <br>
         <h2 class="font-weight-bold text-center">Aplikasi</h2>
@@ -114,8 +111,6 @@
             <button type="submit" class="tombol_login">Login</button>
         </form>
     </div>
-    
-    @include('sweetalert::alert')
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
