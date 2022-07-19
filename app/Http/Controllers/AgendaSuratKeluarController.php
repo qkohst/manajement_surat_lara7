@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AgendaSuratKeluarExport;
 use App\Instansi;
 use App\SuratKeluar;
 use Illuminate\Http\Request;
 use PDF;
+use Excel;
 
 class AgendaSuratKeluarController extends Controller
 {
@@ -32,49 +34,9 @@ class AgendaSuratKeluarController extends Controller
         return $pdf->stream();
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function export()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $filename = 'agenda_surat_keluar ' . date('Y-m-d H_i_s') . '.xlsx';
+        return Excel::download(new AgendaSuratKeluarExport, $filename);
     }
 }

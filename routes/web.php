@@ -30,9 +30,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/suratmasuk/agenda', 'AgendaSuratMasukController@index')->name('agendamasuk.index');
     Route::get('/suratmasuk/agenda/print', 'AgendaSuratMasukController@print')->name('agendamasuk.print');
+    Route::get('/suratmasuk/agenda/export', 'AgendaSuratMasukController@export')->name('agendamasuk.export');
+
 
     Route::get('/suratkeluar/agenda', 'AgendaSuratKeluarController@index')->name('agendakeluar.index');
     Route::get('/suratkeluar/agenda/print', 'AgendaSuratKeluarController@print')->name('agendakeluar.print');
+    Route::get('/suratkeluar/agenda/export', 'AgendaSuratKeluarController@export')->name('agendakeluar.export');
 
     Route::get('/suratmasuk/galeri', 'SuratMasukController@galeri')->name('galeri.suratmasuk');
     Route::get('/suratmasuk/galeri/{id}', 'SuratMasukController@tampil')->name('galeri.suratmasuk.tampil');

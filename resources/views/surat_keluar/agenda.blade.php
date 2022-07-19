@@ -26,9 +26,9 @@
                 <h3 class="card-title">Data {{$title}}</h3>
 
                 <div class="card-tools">
-                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-tambah">
+                    <a href="{{ route('agendakeluar.export') }}" class="btn btn-success btn-sm" target="_blank">
                         <i class="fas fa-file-excel"></i> Download Excel
-                    </button>
+                    </a>
                     <a href="{{ route('agendakeluar.print') }}" class="btn btn-primary btn-sm" target="_blank">
                         <i class="fas fa-print"></i> Cetak
                     </a>
@@ -47,7 +47,7 @@
                             <th>Kode</th>
                             <th>Nomor Surat</th>
                             <th>Tgl. Surat</th>
-                            <th>Tgl. Diterima</th>
+                            <th>Tgl. Catat</th>
                             <th>Pengelola</th>
                             <th>Keterangan</th>
                         </tr>
