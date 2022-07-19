@@ -1,3 +1,63 @@
+<div id="top"></div>
+
+## Installation 
+To run the application on your computer, please follow the following command : 
+
+1. Clone the repo
+   ```sh
+   $ git clone https://github.com/qkohst/manajement_surat_lara7.git
+   ```
+2. Change directory in project which already clone
+   ```sh
+   $ cd manajement_surat_lara7
+   ```
+3. Install Composer packages
+   ```sh
+   $ composer install
+   ```
+4. Create database on your computer
+5. Create a copy of your .env file 
+   ```sh
+   $ cp .env.example .env
+   ```
+6. In the .env file, add database information to allow Laravel to connect to the database
+   ```sh
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE={database-name}
+   DB_USERNAME={username-database}
+   DB_PASSWORD={password-database}
+   ```
+7. Generate an app encryption key
+   ```sh
+   $ php artisan key:generate
+   ```
+8. Seed the database
+      ```sh
+      $ php artisan migrate --seed
+      ```
+9. Running project
+    ```sh
+    $ php artisan serve
+    ```
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="credential"></div>
+
+## Credential in Seeder
+
+Admin
+> Username : admin@mail.com
+> Password : 123456
+> 
+Admin
+> Username : petugas@mail.com
+> Password : 123456
+> 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
